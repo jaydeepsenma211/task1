@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innoventix Solutions | Next-Gen Digital Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#4F46E5', // Deep Indigo for branding
+                        'accent-green': '#00C897', // Vibrant Teal/Green for the CTA
+                        'light-bg': '#E0F2FE', // Very light, pale blue background
+                        'soft-blue': '#F0F9FF', // Lighter blue for sections
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideDown: { // New keyframe for mobile menu
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'slide-down': 'slideDown 0.3s ease-out forwards', // New animation
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .abstract-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            backdrop-filter: blur(12px); /* Blur effect */
+            -webkit-backdrop-filter: blur(12px); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle border */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Soft shadow */
+        }
+
+        .sticky-glass-header {
+            background-color: rgba(255, 255, 255, 0.85); /* Less transparent white */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+
+        /* For scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-hover-transition {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .text-hover-transition:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-light-bg">
+
+    <div class="abstract-bg">
+        <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                <a href="#home" class="text-2xl font-extrabold text-primary-blue tracking-tight text-hover-transition">
+                    <img src="https://innoventixsolutions.com/wp-content/uploads/2024/07/logo-1.svg" alt="Innoventix Solutions Logo" class="h-8 md:h-10">
+                </a>
+
+                <nav class="hidden lg:flex space-x-8 text-gray-800 font-medium">
+                    <a href="#home" class="text-hover-transition hover:text-primary-blue">Home</a>
+                    <a href="#about" class="text-hover-transition hover:text-primary-blue">About Us</a>
+                    <a href="#services" class="text-hover-transition hover:text-primary-blue">Services</a>
+                    <a href="#" class="text-hover-transition hover:text-primary-blue">Portfolio</a>
+                    <a href="#contact" class="text-hover-transition hover:text-primary-blue">Contact Us</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <a href="#contact" class="
+                        bg-accent-green text-white font-semibold py-2 px-4 sm:px-6 rounded-full shadow-lg text-sm sm:text-base
+                        hover:bg-[#00A37A] transition duration-300 transform hover:scale-105
+                        focus:outline-none focus:ring-4 focus:ring-accent-green focus:ring-opacity-50
+                        ">
+                        Enquire Now
+                    </a>
+
+                    <button id="menu-toggle" class="lg:hidden p-2 text-primary-blue hover:text-accent-green transition duration-200 focus:outline-none" aria-label="Toggle Menu">
+                        <svg id="menu-icon-open" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg id="menu-icon-close" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <nav id="mobile-menu" class="hidden lg:hidden mt-3 mx-4 sm:mx-6 rounded-xl shadow-xl glass-card border border-white/40 p-4 animate-slide-down">
+                <div class="flex flex-col space-y-3 text-gray-800 font-medium">
+                    <a href="#home" class="block py-2 px-3 rounded-lg hover:bg-white/50 text-hover-transition hover:text-primary-blue">Home</a>
+                    <a href="#about" class="block py-2 px-3 rounded-lg hover:bg-white/50 text-hover-transition hover:text-primary-blue">About Us</a>
+                    <a href="#services" class="block py-2 px-3 rounded-lg hover:bg-white/50 text-hover-transition hover:text-primary-blue">Services</a>
+                    <a href="#" class="block py-2 px-3 rounded-lg hover:bg-white/50 text-hover-transition hover:text-primary-blue">Portfolio</a>
+                    <a href="#contact" class="block py-2 px-3 rounded-lg hover:bg-white/50 text-hover-transition hover:text-primary-blue">Contact Us</a>
+                </div>
+            </nav>
+
+        </header>
+
+        <main id="home" class="min-h-screen flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-24">
+            <div class="max-w-5xl">
+                <h1 class="
+                    text-5xl sm:text-7xl lg:text-8xl font-black leading-tight
+                    text-primary-blue tracking-tighter mb-6
+                    opacity-0 animate-fade-in-up
+                ">
+                    Struggling with Disconnected Teams <br><span class="text-gray-900"> and <br></span>Poor Collaboration?
+                </h1>
+                
+                <p class="
+                    text-xl sm:text-2xl text-gray-700 font-light max-w-3xl mx-auto mb-12
+                    opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    Our expert team will guide you through every step, from concept validation to a flawless app launch. Whether it’s iOS, Android, or cross-platform, we deliver high-performance apps tailored to your business.
+                </p>
+
+                <a href="#services" class="
+                    inline-flex items-center justify-center
+                    bg-accent-green text-white text-lg font-bold py-3 px-12 rounded-full shadow-xl
+                    hover:bg-[#00A37A] transition duration-300 transform hover:scale-[1.03]
+                    focus:outline-none focus:ring-6 focus:ring-accent-green focus:ring-opacity-50
+                    opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    Explore Solutions
+                </a>
+            </div>
+        </main>
+        
+        <section id="about" class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-on-scroll">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-extrabold text-primary-blue text-center mb-16">
+                    About Innoventix
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="rounded-3xl shadow-2xl overflow-hidden glass-card p-4">
+                        <img src="team collobration.webp" 
+                             alt="Innoventix Team Collaboration" 
+                             class="rounded-2xl w-full h-auto object-cover transition duration-500 hover:scale-[1.02] transform"
+                             onerror="this.onerror=null;this.src='https:';"
+                        >
+                    </div>
+                    
+                    <div class="glass-card p-8 sm:p-12 rounded-3xl space-y-6">
+                        <p class="text-gray-800 text-lg leading-relaxed">
+                            With over 7 years of expertise in delivering cutting-edge web solutions, our team has successfully partnered with clients worldwide, offering services across a diverse range of technologies, including SharePoint development and consulting, Flutter development, WordPress, iOS and Android mobile apps, and Microsoft Office 365. Our clients value our ability to not only meet their expectations but to exceed them by providing tailored solutions on time, every time. Whether you’re looking to create an innovative mobile app or a powerful web platform, our highly skilled developers are ready to bring your vision to life with unmatched quality and efficiency. 
+                        </p>
+                        <p class="text-gray-600">
+                            Our process begins with understanding your unique challenges. We then deploy and optimize tools not just for functionality, but for **seamless user adoption**, ensuring your investment translates directly into increased productivity and reduced operational friction.
+                        </p>
+                        <div class="pt-4 space-y-3">
+                            <div class="flex items-center text-primary-blue font-semibold">
+                                <span class="text-accent-green mr-3 text-2xl">&check;</span>
+                                <p>Featured in Top Flutter App Development Consultant Globally</p>
+                            </div>
+                            <div class="flex items-center text-primary-blue font-semibold">
+                                <span class="text-accent-green mr-3 text-2xl">&check;</span>
+                                <p>Included in Top Power BI Company in India 2023-24</p>
+                            </div>
+                            <div class="flex items-center text-primary-blue font-semibold">
+                                <span class="text-accent-green mr-3 text-2xl">&check;</span>
+                                <p>Best App Development & IT Company in 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="bg-soft-blue py-20 animate-on-scroll">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-primary-blue text-center mb-16">
+                    Accelerate Your Digital Workflow
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 cursor-pointer group">
+                        <div class="text-accent-green mb-4 transition duration-300 group-hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-blue mb-3 group-hover:text-accent-green text-hover-transition">App Development</h3>
+                        <p class="text-gray-600 transition duration-300 group-hover:text-gray-800">Seamless chat, calling, and meeting environments. We customize channels, tabs, and apps to match your operational structure.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 cursor-pointer group">
+                        <div class="text-accent-green mb-4 transition duration-300 group-hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-blue mb-3 group-hover:text-accent-green text-hover-transition">Document Management</h3>
+                        <p class="text-gray-600 transition duration-300 group-hover:text-gray-800">Secure, efficient, and searchable file systems using SharePoint sites and optimal OneDrive synchronization across all devices.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 cursor-pointer group">
+                        <div class="text-accent-green mb-4 transition duration-300 group-hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-blue mb-3 group-hover:text-accent-green text-hover-transition">Automation & Apps</h3>
+                        <p class="text-gray-600 transition duration-300 group-hover:text-gray-800">Building custom business logic and front-end tools with Power Apps and Power Automate to digitize manual processes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-on-scroll">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-extrabold text-primary-blue text-center mb-4">
+                    Let's Build Something Great
+                </h2>
+                <p class="text-xl text-gray-600 text-center mb-12">
+                    Start your digital transformation with a quick consultation.
+                </p>
+
+                <div class="glass-card p-6 sm:p-10 rounded-3xl">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" name="name" id="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-blue focus:ring-primary-blue transition duration-150">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Work Email</label>
+                            <input type="email" name="email" id="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-blue focus:ring-primary-blue transition duration-150">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Inquiry</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-primary-blue focus:ring-primary-blue transition duration-150"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="
+                            w-full 
+                            bg-primary-blue text-white text-lg font-bold py-3 rounded-full shadow-lg
+                            hover:bg-indigo-600 transition duration-300 transform hover:scale-[1.01]
+                            focus:outline-none focus:ring-6 focus:ring-primary-blue focus:ring-opacity-50
+                        ">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-200 text-center space-y-3">
+                        <p class="text-gray-500 font-medium">Or reach us directly:</p>
+                        <p class="text-gray-700">Email: <a href="mailto:info@innoventix.com" class="text-primary-blue hover:underline text-hover-transition">info@innoventix.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="text-center text-sm text-gray-500 py-6 border-t border-gray-200">
+            &copy; 2025 Innoventix Solutions. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+
+        const header = document.getElementById('main-header');
+        const scrollThreshold = 50; 
+
+        function updateHeaderStyle() {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('sticky-glass-header');
+            } else {
+                header.classList.remove('sticky-glass-header');
+            }
+        }
+
+        // --- NEW MOBILE MENU LOGIC ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMobileMenu() {
+            const isMenuOpen = mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icons
+            menuIconOpen.classList.toggle('hidden', !isMenuOpen);
+            menuIconClose.classList.toggle('hidden', isMenuOpen);
+        }
+
+        menuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Close menu when a link is clicked (for smooth scroll)
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu(); // Close the menu
+                }
+            });
+        });
+        // --- END NEW MOBILE MENU LOGIC ---
+
+        const sections = document.querySelectorAll('.animate-on-scroll');
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function initializeAnimations() {
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        window.addEventListener('scroll', updateHeaderStyle);
+        
+        window.onload = function() {
+            updateHeaderStyle(); 
+            initializeAnimations();
+        };
+
+    </script>
+
+</body>
+
+</html>
